@@ -1,51 +1,32 @@
-// const person: {
-//   name: string;
-//   age: number;
-// } = {
-// const person: {
-//   name: string;
-//   age: number;
-//   hobbies: string[];
-//   role: [number, string];
-// } = {
-//   name: "Nebojsa",
-//   age: 21,
-//   hobbies: ["Sports", "Cooking"],
-//   role: [2, "author"],
-// };
+function combine(
+  input1: number | string,
+  input2: number | string,
+  resultConversion: "as-number" | "as-text"
+) {
+  let result;
 
-// const ADMIN = 0;
-// const READ_ONLY = 1;
-// const AUTHOR = 2;
+  if (
+    (typeof input1 === "number" && typeof input2 === "number") ||
+    resultConversion === "as-number"
+  ) {
+    result = +input1 + +input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
 
-enum Role {
-  ADMIN = "ADMIN",
-  READ_ONLY = 7,
-  AUTHOR = 29,
+  //   if (resultConversion === "as-number") {
+  //     return +result;
+  //   } else {
+  //     return result.toString();
+  //   }
 }
 
-const person = {
-  name: "Nebojsa",
-  age: 21,
-  hobbies: ["Sports", "Cooking"],
-  role: Role.ADMIN,
-};
+const combinedAges = combine(30, 26, "as-number");
+console.log(combinedAges);
 
-// person.role.push("admin");
-// person.role[1] = 10;
+const combinedStringAges = combine("30", "25", "as-number");
+console.log(combinedStringAges);
 
-// person.role = [0, "admin", "user"];
-
-let favoriteActivitie: string[];
-favoriteActivitie = ["Sports"];
-
-console.log(person.name);
-
-for (const hobby of person.hobbies) {
-  console.log(hobby.toUpperCase());
-  // console.log(hobby.map()) // ERROR you cant use map on strings
-}
-
-if (person.role === Role.ADMIN) {
-  console.log("is Admin");
-}
+const combinedNames = combine("Max ", "Anna", "as-text");
+console.log(combinedNames);
