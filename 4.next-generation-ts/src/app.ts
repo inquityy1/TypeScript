@@ -37,7 +37,7 @@ activeHobbies.push(...hobbies);
 
 const person = {
   firstName: "Neca",
-  age: 30,
+  age: 21,
 };
 
 const copiedPerson = { ...person };
