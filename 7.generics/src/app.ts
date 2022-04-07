@@ -78,3 +78,25 @@ const numberStorage = new DataStorage<number>();
 // // ...
 // objStorage.removeItem(necaObj);
 // console.log(objStorage.getItems());
+
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
+
+function createCourseGoal(
+  title: string,
+  desctiption: string,
+  date: Date
+): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.description = desctiption;
+  courseGoal.completeUntil = date;
+  return courseGoal as CourseGoal;
+}
+
+const names: Readonly<string[]> = ["Nebojsa", "Milos"];
+// names.push("Nemanja");
+// names.pop();
