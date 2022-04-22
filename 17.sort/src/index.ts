@@ -1,5 +1,7 @@
-console.log("hi hi there!");
+console.log("hi there!");
 
 const logSomething = () => {
-  console.log("somethings");
+  console.log("something!");
 };
+
+logSomething();
