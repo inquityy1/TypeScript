@@ -23,4 +23,3 @@ var NumbersCollection = /** @class */ (function () {
     return NumbersCollection;
 }());
 exports.NumbersCollection = NumbersCollection;
-var collection = new NumbersCollection([1, 2, 3]);
