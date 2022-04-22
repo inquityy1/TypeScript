@@ -7,10 +7,12 @@ var Sorter = /** @class */ (function () {
         var length = this.collection.length;
         for (var i = 0; i < length; i++) {
             for (var j = 0; j < length - i - 1; j++) {
+                if (this.collection instanceof LinkedList) {
+                    //
+                }
                 // all of this only works if collection is number[]
                 // if collection is an array of numbers
                 if (this.collection instanceof Array) {
-                    // collection === number[]
                     if (this.collection[j] > this.collection[j + 1]) {
                         var leftHand = this.collection[j];
                         this.collection[j] = this.collection[j + 1];
