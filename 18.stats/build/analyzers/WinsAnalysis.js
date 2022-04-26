@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WinsAnalisys = void 0;
+exports.WinsAnalysis = void 0;
 const MatchResult_1 = require("../MatchResult");
-class WinsAnalisys {
+class WinsAnalysis {
     constructor(team) {
         this.team = team;
     }
@@ -20,4 +20,4 @@ class WinsAnalisys {
         return `Team ${this.team} won ${wins} game`;
     }
 }
-exports.WinsAnalisys = WinsAnalisys;
+exports.WinsAnalysis = WinsAnalysis;

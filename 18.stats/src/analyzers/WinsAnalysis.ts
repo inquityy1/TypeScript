@@ -2,7 +2,7 @@ import { Analyzer } from "../Summary";
 import { MatchData } from "../MatchData";
 import { MatchResult } from "../MatchResult";
 
-export class WinsAnalisys implements Analyzer {
+export class WinsAnalysis implements Analyzer {
   constructor(public team: string) {}
 
   run(matches: MatchData[]): string {
