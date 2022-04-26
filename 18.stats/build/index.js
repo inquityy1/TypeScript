@@ -18,4 +18,4 @@ for (let match of matchReader.matches) {
         manUnitedWins++;
     }
 }
-console.log(`Man United Won ${manUnitedWins} games`);
+console.log(`Man United Won ${manUnitedWins} games!`);
