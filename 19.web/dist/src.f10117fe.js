@@ -4675,6 +4675,27 @@ function () {
     this.attributes = new Attributes_1.Attributes(attrs);
   }
 
+  Object.defineProperty(User.prototype, "on", {
+    get: function get() {
+      return this.events.on;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(User.prototype, "trigger", {
+    get: function get() {
+      return this.events.trigger;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(User.prototype, "get", {
+    get: function get() {
+      return this.attributes.get;
+    },
+    enumerable: false,
+    configurable: true
+  });
   return User;
 }();
 
@@ -4693,28 +4714,10 @@ var User_1 = require("./models/User");
 var user = new User_1.User({
   name: "new record",
   age: 0
-}); // A quick reminder on accessors
-
-var Person =
-/** @class */
-function () {
-  function Person(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  Object.defineProperty(Person.prototype, "fullName", {
-    get: function get() {
-      return "".concat(this.firstName, " ").concat(this.lastName);
-    },
-    enumerable: false,
-    configurable: true
-  });
-  return Person;
-}();
-
-var person = new Person("firstnname", "lastname");
-console.log(person.fullName);
+});
+user.on("change", function () {
+  console.log("user was changed");
+});
 },{"./models/User":"src/models/User.ts"}],"../../../Users/Nebojsa/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
