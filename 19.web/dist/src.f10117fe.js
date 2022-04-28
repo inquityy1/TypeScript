@@ -4694,11 +4694,10 @@ var user = new User_1.User({
   name: "new record",
   age: 0
 });
-user.save();
-user.events.on("change", function () {
-  console.log("change!");
-});
-user.events.trigger("change");
+user.attributes.get("id");
+user.attributes.get("name");
+user.attributes.get("age");
+user.sync.save();
 },{"./models/User":"src/models/User.ts"}],"../../../Users/Nebojsa/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
