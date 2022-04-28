@@ -4640,25 +4640,16 @@ var rootUrl = "http://localhost:3000/users";
 var User =
 /** @class */
 function () {
-  function User(data) {
-    this.data = data;
+  function User() {
     this.events = new Eventing_1.Eventing();
     this.sync = new Sync_1.Sync(rootUrl);
   }
-
-  User.prototype.get = function (propName) {
-    return this.data[propName];
-  };
-
-  User.prototype.set = function (update) {
-    Object.assign(this.data, update);
-  };
 
   return User;
 }();
 
 exports.User = User; // For console
-//  npm run start:db
+// npm run start:db
 // npm run start:parcel
 },{"./Eventing":"src/models/Eventing.ts","./Sync":"src/models/Sync.ts"}],"src/index.ts":[function(require,module,exports) {
 "use strict";
@@ -4706,7 +4697,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65122" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56994" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

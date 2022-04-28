@@ -15,5 +15,5 @@ export class User {
 }
 
 // For console
-//  npm run start:db
+// npm run start:db
 // npm run start:parcel
