@@ -1,5 +1,16 @@
 {
   "dependencies": {
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^10.7.0"
-  }
+  },
+  "name": "15.features",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
