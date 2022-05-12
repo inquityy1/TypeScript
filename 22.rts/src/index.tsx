@@ -1,10 +1,10 @@
 import { createRoot } from "react-dom/client";
-import UserSearch from "./state/UserSearch";
+import EventComponent from "./events/EventComponent";
 
 const App = () => {
   return (
     <div>
-      <UserSearch />
+      <EventComponent />
     </div>
   );
 };
