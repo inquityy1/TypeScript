@@ -1,11 +1,11 @@
 import { createRoot } from "react-dom/client";
-import Parent from "./props/Parent";
+import GuestList from "./state/GuestList";
 
 const App = () => {
   return (
-    <h1>
-      <Parent />
-    </h1>
+    <div>
+      <GuestList />
+    </div>
   );
 };
 
