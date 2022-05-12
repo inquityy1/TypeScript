@@ -1,10 +1,11 @@
 import { createRoot } from "react-dom/client";
+import Parent from "./props/Parent";
 
 const App = () => {
   return (
-    <div>
-      <h1>Hi there!</h1>
-    </div>
+    <h1>
+      <Parent />
+    </h1>
   );
 };
 
