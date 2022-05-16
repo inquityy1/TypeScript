@@ -1,8 +1,26 @@
-import React from "react";
+import { useState } from "react";
 import { createRoot } from "react-dom/client";
 
 const App = () => {
-  return <h1>Hi</h1>;
+  const [input, setInput] = useState("");
+  const [code, setCode] = useState("");
+
+  const onClick = () => {
+    console.log(input);
+  };
+
+  return (
+    <div>
+      <textarea
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      ></textarea>
+      <div>
+        <button onClick={onClick}>Submit</button>
+      </div>
+      <pre>{code}</pre>
+    </div>
+  );
 };
 
 const container = document.getElementById("root");
