@@ -1,7 +1,7 @@
 import "bulmaswatch/superhero/bulmaswatch.min.css";
 import * as esbuild from "esbuild-wasm";
+import ReactDOM from "react-dom";
 import { useState, useEffect, useRef } from "react";
-import { createRoot } from "react-dom/client";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { fetchPlugin } from "./plugins/fetch-plugin";
 import CodeEditor from "./components/code-editor";
@@ -87,6 +87,4 @@ const App = () => {
   );
 };
 
-const container = document.getElementById("root");
-const root = createRoot(container!);
-root.render(<App />);
+ReactDOM.render(<App />, document.querySelector("#root"));
