@@ -4,6 +4,7 @@ import { ResizableBox, ResizableBoxProps } from "react-resizable";
 
 interface ResizableProps {
   direction: "horizontal" | "vertical";
+  children: any;
 }
 
 const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
