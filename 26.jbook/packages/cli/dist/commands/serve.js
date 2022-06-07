@@ -30,11 +30,12 @@ exports.serveCommand = new commander_1.Command()
       `);
     }
     catch (err) {
-        if (err instanceof Error) {
-            console.log("Here the problem", err.message);
+        if (err.code === "EADDRINUSE") {
+            console.error("Port is in use. Try running on a different port.");
         }
         else {
-            console.log("Unexpected error", err);
+            console.log("Heres the problem", err.message);
         }
+        process.exit(1);
     }
 }));
