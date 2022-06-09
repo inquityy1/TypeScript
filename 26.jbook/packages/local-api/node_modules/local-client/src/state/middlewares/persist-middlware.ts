@@ -11,6 +11,8 @@ export const persistMiddlware = ({
   dispatch: Dispatch<Action>;
   getState: () => RootState;
 }) => {
+  let timer: any;
+
   return (next: (action: Action) => void) => {
     return (action: Action) => {
       next(action);
@@ -23,7 +25,13 @@ export const persistMiddlware = ({
           ActionType.DELETE_CELL,
         ].includes(action.type)
       ) {
-        saveCells()(dispatch, getState);
+        if (timer) {
+          clearTimeout(timer);
+          saveCells()(dispatch, getState);
+        }
+        timer = setTimeout(() => {
+          saveCells()(dispatch, getState);
+        }, 250);
       }
     };
   };
