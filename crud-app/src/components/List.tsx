@@ -14,9 +14,17 @@ const List: React.FC = () => {
   const [employees, setEmployees] = useState<JSONProps[]>([]);
 
   useEffect(() => {
-    // GET request using axios inside useEffect React hook
     axios.get(API).then((response) => setEmployees(response.data));
   }, []);
+
+  const onDeleteClick = (id: number) => {
+    console.log(id);
+
+    axios.delete(`${API}/${id}`).then(() => {
+      const employeess = employees.filter((item) => item.id !== id);
+      setEmployees(employeess);
+    });
+  };
 
   const employeeForList = employees.map((employee, index) => (
     <tr className="table-row" key={index}>
@@ -24,22 +32,24 @@ const List: React.FC = () => {
       <td>{employee.first_name}</td>
       <td>{employee.last_name}</td>
       <td>{employee.gender}</td>
-      <button>Delete</button>
+      <td>
+        <button onClick={() => onDeleteClick(employee.id)}>Delete</button>
+      </td>
     </tr>
   ));
 
   return (
     <table>
-      <tr>
+      <thead>
         <tr>
           <th>id</th>
           <th>Name</th>
           <th>Last name</th>
           <th>gender</th>
         </tr>
+      </thead>
 
-        {employeeForList}
-      </tr>
+      <tbody>{employeeForList}</tbody>
     </table>
   );
 };
