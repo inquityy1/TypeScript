@@ -1,0 +1,24 @@
+{
+  "employees": [
+    {
+      "firstName": "nemanja",
+      "lastName": "nikolic",
+      "gender": "Male",
+      "id": 1
+    },
+    {
+      "firstName": "dsa",
+      "lastName": "asd",
+      "gender": "Male",
+      "id": 2
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "isAdmin": true,
+      "pass": "******",
+      "name": "Neca"
+    }
+  ]
+}

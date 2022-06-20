@@ -1,0 +1,28 @@
+.app {
+  display: flex;
+  justify-content: center;
+}
+
+.app .app-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app .app-form .table-form form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.app .app-form .table-form form input,
+.app .app-form .table-form form select {
+  margin-top: 10px;
+  height: 1.5rem;
+}
+
+.app .app-form .table-form form button {
+  margin-top: 20px;
+}
