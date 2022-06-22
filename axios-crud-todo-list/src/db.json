@@ -1,16 +1,10 @@
 {
   "employees": [
     {
-      "firstName": "nemanja",
-      "lastName": "nikolic",
+      "firstName": "Nemanja",
+      "lastName": "Nikolic",
       "gender": "Male",
       "id": 1
-    },
-    {
-      "firstName": "dsa",
-      "lastName": "asd",
-      "gender": "Male",
-      "id": 2
     }
   ],
   "user": [

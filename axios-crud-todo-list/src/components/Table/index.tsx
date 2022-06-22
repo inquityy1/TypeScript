@@ -1,11 +1,17 @@
 import { Todo } from "../interfaces";
 import { deleteRequest } from "../request";
 
+type Props = {
+  todo: Todo[];
+};
+
 const onDeleteClick = (id: number): void => {
   deleteRequest(id);
 };
 
-const Table = ({ todo }: any) => {
+const onUpdateClick = async (employee: any) => {};
+
+const Table: React.FC<Props> = ({ todo }: any) => {
   return (
     <div className="app-table">
       <table>
@@ -28,6 +34,9 @@ const Table = ({ todo }: any) => {
                 <button onClick={() => onDeleteClick(employee.id)}>
                   Delete
                 </button>
+              </td>
+              <td>
+                <button onClick={() => onUpdateClick(employee)}>Update</button>
               </td>
             </tr>
           ))}
