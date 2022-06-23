@@ -35,3 +35,6 @@ export const postRequest = async (appForm: AppForm) => {
     alert(error);
   }
 };
+export const putRequest = async (id: any, defaultForm: AppForm) => {
+  await axios.put(`${URL}/${id}`, defaultForm);
+};

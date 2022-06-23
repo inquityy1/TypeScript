@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Todo } from "../interfaces";
 import { deleteRequest } from "../request";
 
@@ -9,9 +10,11 @@ const onDeleteClick = (id: number): void => {
   deleteRequest(id);
 };
 
-const onUpdateClick = async (employee: any) => {};
+const Table: React.FC<Props> = ({ todo }) => {
+  const setID = (employee: Todo) => {
+    localStorage.setItem("ID", employee.id);
+  };
 
-const Table: React.FC<Props> = ({ todo }: any) => {
   return (
     <div className="app-table">
       <table>
@@ -36,7 +39,9 @@ const Table: React.FC<Props> = ({ todo }: any) => {
                 </button>
               </td>
               <td>
-                <button onClick={() => onUpdateClick(employee)}>Update</button>
+                <Link to={`/update-employee/${employee.id}`}>
+                  <button onClick={() => setID(employee)}>Update</button>
+                </Link>
               </td>
             </tr>
           ))}

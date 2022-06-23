@@ -49,7 +49,11 @@ const Form: FC = () => {
         onChange={handleOnChange}
       />
       <label>Choose a gender:</label>
-      <select name="gender" defaultValue="Male" onChange={handleOnChange}>
+      <select
+        name="gender"
+        defaultValue={defaultForm.gender}
+        onChange={handleOnChange}
+      >
         <option value="Male">Male</option>
         <option value="Female">Female</option>
       </select>
