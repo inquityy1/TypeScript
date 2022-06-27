@@ -1,18 +1,28 @@
 {
   "employees": [
     {
-      "firstName": "nemanja",
-      "lastName": "nikolic",
+      "firstName": "sfhdg",
+      "lastName": "hsgfd",
       "gender": "Male",
       "id": 1
+    },
+    {
+      "firstName": "111",
+      "lastName": "111",
+      "gender": "Male",
+      "id": 3
     }
   ],
   "user": [
     {
-      "id": 1,
-      "isAdmin": true,
-      "pass": "******",
-      "name": "Neca"
+      "username": "Neca",
+      "password": "neca123",
+      "role": "admin"
+    },
+    {
+      "username": "Nemanja",
+      "password": "bucko123",
+      "role": "user"
     }
   ]
 }

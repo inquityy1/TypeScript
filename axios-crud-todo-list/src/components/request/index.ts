@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import axios from "axios";
-import { URL } from "../../URL";
+import { EMPLOYEES_URL } from "../../URL";
 import { Todo, AppForm } from "../interfaces";
 
 export const getRequest = async (
@@ -9,7 +9,7 @@ export const getRequest = async (
 ): Promise<void> => {
   const fetchData = async () => {
     try {
-      const res = await axios.get(URL);
+      const res = await axios.get(EMPLOYEES_URL);
       setTodo(res.data);
     } catch (error) {
       console.log(error);
@@ -22,7 +22,7 @@ export const getRequest = async (
 
 export const deleteRequest = async (id: number): Promise<void> => {
   try {
-    await axios.delete(`${URL}/${id}`);
+    await axios.delete(`${EMPLOYEES_URL}/${id}`);
   } catch (error) {
     alert(error);
   }
@@ -30,11 +30,11 @@ export const deleteRequest = async (id: number): Promise<void> => {
 
 export const postRequest = async (appForm: AppForm) => {
   try {
-    await axios.post(URL, appForm);
+    await axios.post(EMPLOYEES_URL, appForm);
   } catch (error) {
     alert(error);
   }
 };
 export const putRequest = async (id: any, defaultForm: AppForm) => {
-  await axios.put(`${URL}/${id}`, defaultForm);
+  await axios.put(`${EMPLOYEES_URL}/${id}`, defaultForm);
 };
