@@ -1,0 +1,14 @@
+.add-employee-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-employee-form .input input {
+  margin-top: 25px;
+  width: 100%;
+  height: 3rem;
+}
+
+.add-employee-form .add-employee-button {
+  margin-top: 25px;
+}
