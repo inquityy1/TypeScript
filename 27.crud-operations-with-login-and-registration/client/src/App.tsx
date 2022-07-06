@@ -3,7 +3,11 @@ import { FC, useEffect, useState } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import ProtectedRoutes from "./privateRoutes/ProtectedRoutes";
+import {
+  AdminRoutes,
+  UserRoutes,
+  LogedOutRoutes,
+} from "./privateRoutes/PrivateRoutes";
 import { API_URL } from "./API_URL";
 import { Header } from "./components/Header";
 import { Login } from "./components/Login";
@@ -15,7 +19,7 @@ import { UpdateEmployee } from "./components/UpdateEmployee";
 const App: FC = () => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
+  useEffect((): void => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(`${API_URL}list-employees`);
@@ -32,9 +36,11 @@ const App: FC = () => {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route element={<LogedOutRoutes />}>
+          <Route path="/" element={<Login />} />
+        </Route>
 
-        <Route element={<ProtectedRoutes />}>
+        <Route element={<AdminRoutes />}>
           <Route path="/admin" element={<AdminDashboard data={data} />} />
           <Route
             path="/add-employee"
@@ -45,7 +51,9 @@ const App: FC = () => {
             element={<UpdateEmployee setData={setData} />}
           />
         </Route>
-        <Route path="/user" element={<UserDashboard />} />
+        <Route element={<UserRoutes />}>
+          <Route path="/user" element={<AdminDashboard data={data} />} />
+        </Route>
       </Routes>
 
       {/* <Header />

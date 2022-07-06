@@ -13,16 +13,10 @@
   ],
   "list-employees": [
     {
-      "firstName": "asdasd",
-      "lastName": "sad",
-      "gender": "asd",
+      "firstName": "nemanja",
+      "lastName": "nikolic",
+      "gender": "shemale",
       "id": 2
-    },
-    {
-      "firstName": "Neca",
-      "lastName": "asd",
-      "gender": "12",
-      "id": 3
     }
   ]
 }

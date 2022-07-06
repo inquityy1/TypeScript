@@ -1,11 +1,10 @@
-import axios from "axios";
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteEmployeeService } from "../../services/employee.services";
-import { API_URL } from "../../API_URL";
+import { getCurrentUser } from "../../services/auth.service";
 
 interface DataProps {
-  id: number;
+  id: any;
   firstName: string;
   lastName: string;
   gender: string;
@@ -17,17 +16,26 @@ interface Props {
 
 export const AdminDashboard: FC<Props> = ({ data }) => {
   const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
-  const onAddClick: React.MouseEventHandler<HTMLButtonElement> = (): void => {
-    navigate("/add-employee");
-  };
+  useEffect((): void => {
+    const currentUser = getCurrentUser();
+    if (currentUser.role === "admin") {
+      setIsAdmin(true);
+    }
+  }, []);
 
   const onDeleteClick = (id: number): void => {
     deleteEmployeeService(id);
   };
 
-  const onUpdateClick = (id: number): void => {
-    navigate(`/update/:${id}`);
+  const onUpdateClick = (employee: DataProps): void => {
+    localStorage.setItem("ID", employee.id);
+    localStorage.setItem("FirstName", employee.firstName);
+    localStorage.setItem("LastName", employee.lastName);
+    localStorage.setItem("Gender", employee.gender);
+
+    navigate(`/update/:${employee.id}`);
   };
 
   return (
@@ -37,8 +45,8 @@ export const AdminDashboard: FC<Props> = ({ data }) => {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
             <th scope="col">Gender</th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -52,30 +60,39 @@ export const AdminDashboard: FC<Props> = ({ data }) => {
                 <th>{employee.firstName}</th>
                 <th>{employee.lastName}</th>
                 <th>{employee.gender}</th>
-                <th>
-                  <button
-                    onClick={() => onDeleteClick(employee.id)}
-                    className="btn btn-danger"
-                  >
-                    Delete
-                  </button>
-                </th>
-                <th>
-                  <button
-                    onClick={() => onUpdateClick(employee.id)}
-                    className="btn btn-dark"
-                  >
-                    Update
-                  </button>
-                </th>
+
+                {isAdmin ? (
+                  <>
+                    <th>
+                      <button
+                        onClick={() => onDeleteClick(employee.id)}
+                        className="btn btn-danger"
+                      >
+                        Delete
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        onClick={() => onUpdateClick(employee)}
+                        className="btn btn-dark"
+                      >
+                        Update
+                      </button>
+                    </th>
+                  </>
+                ) : null}
               </tr>
             );
           })}
         </tbody>
       </table>
-      <button onClick={onAddClick} className="btn btn-primary">
-        Add Employee
-      </button>
+      {isAdmin ? (
+        <>
+          <Link to={"/add-employee"} className="btn btn-primary">
+            Add Employee
+          </Link>
+        </>
+      ) : null}
     </>
   );
 };

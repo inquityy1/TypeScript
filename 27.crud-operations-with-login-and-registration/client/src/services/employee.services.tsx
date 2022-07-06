@@ -14,6 +14,20 @@ export const addEmployeeService = (
     });
 };
 
+export const updateEmployeeService = (
+  id: number,
+  firstName: string,
+  lastName: string,
+  gender: string,
+  setData: React.Dispatch<React.SetStateAction<never[]>>
+): void => {
+  axios
+    .put(`${API_URL}list-employees/${id}`, { firstName, lastName, gender })
+    .then((response) => {
+      setData(response.data);
+    });
+};
+
 export const deleteEmployeeService = (id: number): void => {
   axios.delete(`${API_URL}list-employees/${id}`);
 };

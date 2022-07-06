@@ -1,6 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { addEmployeeService } from "../../services/employee.services";
+import { updateEmployeeService } from "../../services/employee.services";
 
 interface Props {
   setData: React.Dispatch<React.SetStateAction<never[]>>;
@@ -13,17 +13,35 @@ export const UpdateEmployee: FC<Props> = ({ setData }) => {
 
   const navigate = useNavigate();
 
+  const clearLocalStorage = () => {
+    localStorage.removeItem("ID");
+    localStorage.removeItem("FirstName");
+    localStorage.removeItem("LastName");
+    localStorage.removeItem("Gender");
+  };
+
+  useEffect((): void => {
+    setFirstName(localStorage.getItem("FirstName") || "");
+    setLastName(localStorage.getItem("LastName") || "");
+    setGender(localStorage.getItem("Gender") || "");
+  }, []);
+
   const onClickSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    addEmployeeService(firstName, lastName, gender, setData);
+    const id: number = Number(localStorage.getItem("ID"));
+
+    updateEmployeeService(id, firstName, lastName, gender, setData);
 
     setTimeout(() => {
+      clearLocalStorage();
       navigate("/admin");
     }, 200);
   };
 
   const onBackClick = () => {
+    clearLocalStorage();
+
     navigate("/admin");
   };
 
