@@ -11,13 +11,14 @@ import {
 import { API_URL } from "./API_URL";
 import { Header } from "./components/Header";
 import { Login } from "./components/Login";
-import { AdminDashboard } from "./components/AdminDashboard";
-import { UserDashboard } from "./components/UserDashboard/UserDashboard";
+import { Dashboard } from "./components/Dashboard";
 import { AddEmployee } from "./components/AddEmployee";
 import { UpdateEmployee } from "./components/UpdateEmployee";
 
 const App: FC = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<string[]>([]);
 
   useEffect((): void => {
     const fetchData = async () => {
@@ -30,7 +31,22 @@ const App: FC = () => {
     };
 
     fetchData();
-  }, [data]);
+  }, []);
+
+  const searchHandler = (searchTerm: string): void => {
+    setSearchTerm(searchTerm);
+    if (searchTerm !== "") {
+      const newEmployeeList = data.filter((employee: any) => {
+        return Object.values(employee.firstName)
+          .join("")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      });
+      setSearchResults(newEmployeeList);
+    } else {
+      setSearchResults(data);
+    }
+  };
 
   return (
     <Router>
@@ -41,7 +57,16 @@ const App: FC = () => {
         </Route>
 
         <Route element={<AdminRoutes />}>
-          <Route path="/admin" element={<AdminDashboard data={data} />} />
+          <Route
+            path="/admin"
+            element={
+              <Dashboard
+                data={searchTerm.length < 1 ? data : searchResults}
+                term={searchTerm}
+                searchKeyword={searchHandler}
+              />
+            }
+          />
           <Route
             path="/add-employee"
             element={<AddEmployee setData={setData} />}
@@ -52,29 +77,9 @@ const App: FC = () => {
           />
         </Route>
         <Route element={<UserRoutes />}>
-          <Route path="/user" element={<AdminDashboard data={data} />} />
+          <Route path="/user" element={<Dashboard data={data} />} />
         </Route>
       </Routes>
-
-      {/* <Header />
-      <Routes>
-        <Route exact path="/" element={<Main />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/register" element={<SignUp />} />
-
-        <Route element={<ProtectedRoutes />}>
-          <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route exact path="/feed" element={<PostFeed />} />
-          <Route exact path="/edit-profile" element={<CreateProfile />} />
-          <Route exact path="/add-experience" element={<CreateExperience />} />
-          <Route exact path="/add-education" element={<CreateEducation />} />
-          <Route exact path="/create-profile" element={<CreateProfile />} />
-        </Route>
-
-        <Route exact path="/profiles" element={<Profiles />} />
-        <Route exact path="/profiles/:name" element={<UserProfile />} />
-      </Routes>
-      <Footer /> */}
     </Router>
   );
 };

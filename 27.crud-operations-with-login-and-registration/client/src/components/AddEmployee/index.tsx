@@ -21,7 +21,8 @@ export const AddEmployee: FC<Props> = ({ setData }) => {
 
     setTimeout(() => {
       navigate("/admin");
-    }, 200);
+      window.location.reload();
+    }, 300);
   };
 
   const onBackClick = () => {

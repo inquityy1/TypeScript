@@ -36,7 +36,8 @@ export const UpdateEmployee: FC<Props> = ({ setData }) => {
     setTimeout(() => {
       clearLocalStorage();
       navigate("/admin");
-    }, 200);
+      window.location.reload();
+    }, 300);
   };
 
   const onBackClick = () => {
