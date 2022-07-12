@@ -34,9 +34,10 @@ export const UpdateEmployee: FC<Props> = ({ setData }) => {
     updateEmployeeService(id, firstName, lastName, gender, setData);
 
     setTimeout(() => {
-      clearLocalStorage();
       navigate("/admin");
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     }, 300);
   };
 

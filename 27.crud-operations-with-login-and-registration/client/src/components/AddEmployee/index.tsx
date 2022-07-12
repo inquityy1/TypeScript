@@ -21,7 +21,9 @@ export const AddEmployee: FC<Props> = ({ setData }) => {
 
     setTimeout(() => {
       navigate("/admin");
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     }, 300);
   };
 

@@ -15,10 +15,18 @@ import { Dashboard } from "./components/Dashboard";
 import { AddEmployee } from "./components/AddEmployee";
 import { UpdateEmployee } from "./components/UpdateEmployee";
 
+interface DataProps {
+  id: number;
+  firstName: string;
+  lastName: string;
+  gender: string;
+}
+
 const App: FC = () => {
   const [data, setData] = useState<any>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect((): void => {
     const fetchData = async () => {
@@ -33,18 +41,20 @@ const App: FC = () => {
     fetchData();
   }, []);
 
-  const searchHandler = (searchTerm: string): void => {
+  const searchOnNameHandler = (searchTerm: string): void => {
     setSearchTerm(searchTerm);
     if (searchTerm !== "") {
-      const newEmployeeList = data.filter((employee: any) => {
+      const newEmployeeList = data.filter((employee: DataProps) => {
         return Object.values(employee.firstName)
           .join("")
           .toLowerCase()
           .includes(searchTerm.toLowerCase());
       });
       setSearchResults(newEmployeeList);
+      setDisabled(true);
     } else {
       setSearchResults(data);
+      setDisabled(false);
     }
   };
 
@@ -63,7 +73,9 @@ const App: FC = () => {
               <Dashboard
                 data={searchTerm.length < 1 ? data : searchResults}
                 term={searchTerm}
-                searchKeyword={searchHandler}
+                searchKeyword={searchOnNameHandler}
+                setData={setData}
+                disabled={disabled}
               />
             }
           />

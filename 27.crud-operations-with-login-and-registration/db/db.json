@@ -19,16 +19,16 @@
       "id": 1
     },
     {
-      "firstName": "Anastasija",
-      "lastName": "Nicic",
-      "gender": "female",
-      "id": 3
+      "firstName": "Nemanja",
+      "lastName": "nikolic",
+      "gender": "Male",
+      "id": 2
     },
     {
-      "firstName": "ana",
+      "firstName": "anastasija",
       "lastName": "nicic",
-      "gender": "male",
-      "id": 4
+      "gender": "female",
+      "id": 3
     }
   ]
 }
