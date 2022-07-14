@@ -14,13 +14,7 @@ import { Login } from "./components/Login";
 import { Dashboard } from "./components/Dashboard";
 import { AddEmployee } from "./components/AddEmployee";
 import { UpdateEmployee } from "./components/UpdateEmployee";
-
-interface DataProps {
-  id: number;
-  firstName: string;
-  lastName: string;
-  gender: string;
-}
+import { DataProps } from "./interface";
 
 const App: FC = () => {
   const [data, setData] = useState<any>([]);
@@ -39,7 +33,7 @@ const App: FC = () => {
     };
 
     fetchData();
-  }, []);
+  }, [data]);
 
   const searchOnNameHandler = (searchTerm: string): void => {
     setSearchTerm(searchTerm);
@@ -89,7 +83,12 @@ const App: FC = () => {
           />
         </Route>
         <Route element={<UserRoutes />}>
-          <Route path="/user" element={<Dashboard data={data} />} />
+          <Route
+            path="/user"
+            element={
+              <Dashboard data={data} searchKeyword={searchOnNameHandler} />
+            }
+          />
         </Route>
       </Routes>
     </Router>
