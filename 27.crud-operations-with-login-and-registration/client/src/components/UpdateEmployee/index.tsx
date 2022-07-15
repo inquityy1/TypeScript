@@ -35,7 +35,10 @@ export const UpdateEmployee: FC<Props> = ({ setData }) => {
 
     setTimeout(() => {
       navigate("/admin");
-    }, 100);
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
+    }, 300);
   };
 
   const onBackClick = () => {

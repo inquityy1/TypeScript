@@ -33,7 +33,7 @@ const App: FC = () => {
     };
 
     fetchData();
-  }, [data]);
+  }, []);
 
   const searchOnNameHandler = (searchTerm: string): void => {
     setSearchTerm(searchTerm);
@@ -83,12 +83,7 @@ const App: FC = () => {
           />
         </Route>
         <Route element={<UserRoutes />}>
-          <Route
-            path="/user"
-            element={
-              <Dashboard data={data} searchKeyword={searchOnNameHandler} />
-            }
-          />
+          <Route path="/user" element={<Dashboard data={data} />} />
         </Route>
       </Routes>
     </Router>
