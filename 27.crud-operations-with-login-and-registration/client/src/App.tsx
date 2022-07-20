@@ -23,13 +23,18 @@ const App: FC = () => {
   const [disabled, setDisabled] = useState(false);
 
   useEffect((): void => {
+    let abortController = new AbortController();
     const fetchData = async () => {
+      console.log("first");
       try {
         const { data: response } = await axios.get(`${API_URL}list-employees`);
         setData(response);
       } catch (error) {
         console.error(error);
       }
+      return () => {
+        abortController.abort();
+      };
     };
 
     fetchData();

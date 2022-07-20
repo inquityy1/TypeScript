@@ -13,18 +13,6 @@
   ],
   "list-employees": [
     {
-      "firstName": "s",
-      "lastName": "s",
-      "gender": "Nemanja",
-      "id": 1
-    },
-    {
-      "firstName": "a",
-      "lastName": "a",
-      "gender": "Neca",
-      "id": 2
-    },
-    {
       "firstName": "d",
       "lastName": "d",
       "gender": "male",
@@ -33,7 +21,7 @@
     {
       "firstName": "f",
       "lastName": "f",
-      "gender": "1",
+      "gender": "female",
       "id": 4
     },
     {
@@ -53,6 +41,12 @@
       "lastName": "g",
       "gender": "dsa",
       "id": 7
+    },
+    {
+      "firstName": "Neca",
+      "lastName": "nikolic",
+      "gender": "123",
+      "id": 8
     }
   ]
 }
