@@ -25,7 +25,6 @@ const App: FC = () => {
   useEffect((): void => {
     let abortController = new AbortController();
     const fetchData = async () => {
-      console.log("first");
       try {
         const { data: response } = await axios.get(`${API_URL}list-employees`);
         setData(response);
